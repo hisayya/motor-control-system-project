@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trajectory-writer"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fonttools",
+  "svgpathtools",
+  "pillow",
+  "vtracer"
+]
+
+[project.scripts]
+trajectory-writer = "trajectory_writer.cli:main"
+build-text = "trajectory_writer.cli:build_text_entry"
+build-image = "trajectory_writer.cli:build_image_entry"
+apply-br = "trajectory_writer.cli:apply_br_entry"
+check-br = "trajectory_writer.cli:check_br_entry"
+
+[project.optional-dependencies]
+build = [
+  "pyinstaller"
+]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]

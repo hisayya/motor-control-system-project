@@ -1,0 +1,40 @@
+name: build-windows-exe
+
+concurrency:
+  group: build-windows-exe-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "trajectory_writer/**"
+      - ".github/workflows/build-windows-exe.yml"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      # 仓库含超长路径目录，Windows 默认 MAX_PATH 会导致完整 checkout 失败；仅检出构建所需路径
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            trajectory_writer
+            .github
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          architecture: "x64"
+      - name: Build
+        shell: pwsh
+        working-directory: ${{ github.workspace }}
+        run: .\trajectory_writer\scripts\build_windows_exe.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: trajectory-writer-windows-x64
+          path: |
+            trajectory_writer/build/windows/trajectory-writer-windows-x64.zip
+            trajectory_writer/build/windows/trajectory-writer.exe
