@@ -19,6 +19,14 @@
 3. **Workspace mapping** — maps vector coordinates onto a physical machine workspace (configurable origin / scale / rotation / mirror).
 4. **Motion optimization** — lift/plunge sequencing, point sampling & simplification (`max_points`, `simplify_tolerance`), and travel-lift control.
 
+## 💡 Use cases
+
+- **CNC / writing machines** — you need to turn text into a machine-ready writing path. One CLI command renders glyph outlines into ordered pen movements.
+- **Turning images into drawable contours** — you have a bitmap glyph or logo and want it drawn by the machine: the vectorization pipeline (`vtracer`) converts it into usable contours.
+- **Re-targeting different machines** — you switch machines or beds: tweak `machine.toml` (origin, scale, mirror, motion limits) and re-run, no code changes.
+- **Learning trajectory planning** — a small, readable Python pipeline for studying path sampling, simplification, and lift/plunge sequencing.
+
+
 ---
 
 ## 🚀 Quick start
