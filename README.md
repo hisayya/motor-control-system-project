@@ -1,5 +1,11 @@
 # Trajectory Writer
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![Experimental](https://img.shields.io/badge/status-experimental-orange?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/hisayya/motor-control-system-project?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+
+
 > **A Python CLI that turns text & images into machine-ready writing trajectories** — designed for fixed-outline writing tasks on CNC / robotic writing machines.
 
 *(Experimental / learning-oriented project — trajectory planning + G-code-style export pipeline.)*

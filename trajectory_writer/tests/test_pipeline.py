@@ -79,7 +79,7 @@ class PipelineTests(unittest.TestCase):
         font = find_font()
         if font is None:
             self.skipTest("missing system font")
-        result = build_text_job("交通", font, self.machine, self.base / "text_job")
+        result = build_text_job("Hello", font, self.machine, self.base / "text_job")
         data_text = result.data_path.read_text(encoding="utf-8")
         trajectory = json.loads(result.trajectory_path.read_text(encoding="utf-8"))
         self.assertTrue(result.trajectory_path.exists())

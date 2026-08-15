@@ -17,7 +17,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      # 仓库含超长路径目录，Windows 默认 MAX_PATH 会导致完整 checkout 失败；仅检出构建所需路径
+      # Repo contains deep path hierarchies; Windows default MAX_PATH breaks full checkout; check out only build paths
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |

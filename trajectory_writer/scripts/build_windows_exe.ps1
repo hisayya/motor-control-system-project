@@ -11,7 +11,7 @@ if (Test-Path $OutputRoot) {
 
 New-Item -ItemType Directory -Path $PackageRoot | Out-Null
 
-# 从 CI 仓库根目录调用本脚本时，cwd 可能不是 trajectory_writer；pip -e 与 unittest 需在包根执行
+# When invoked from the CI repo root, cwd may not be trajectory_writer; pip -e and unittest must run at package root
 Set-Location $Root
 
 python -m pip install --upgrade pip
